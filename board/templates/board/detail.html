@@ -4,7 +4,10 @@
     <h1>{{ article.title }}</h1>
     <p>{{ article.content }}</p>
     <hr />
-    <a href="/board/articles"><button>List</button></a>
-    <a href="/board/articles/{{ article.id }}/edit"><button>Edit</button></a>
-    <a href="/board/articles/{{ article.id }}/delete"><button>Delete</button></a>
+    <a href="/board/articles/"><button>List</button></a>
+    <a href="/board/articles/{{ article.id }}/edit/"><button>Edit</button></a>
+    <form action="/board/articles/{{ article.id }}/delete/" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
 {% endblock %}
