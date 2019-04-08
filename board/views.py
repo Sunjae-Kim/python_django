@@ -1,33 +1,53 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Article
 
 
 # Create your views here.
-def new(request):
-    pass
+def article_new(request):
+    return render(request, 'board/new.html')
 
 
-def create(request):
-    pass
+def article_create(request):
+    article = Article()
+    article.title = request.POST.get('input_title')
+    article.content = request.POST.get('input_content')
+    article.save()
+    return redirect(f'/board/articles/{article.id}')
 
 
-def all_list(request):
-    pass
+def article_list(request):
+    articles = Article.objects.all()
+    return render(request, 'board/list.html', {
+        'articles': articles,
+    })
 
 
-def detail(request, id):
-    pass
+def article_detail(request, article_id):
+    article = Article.objects.get(id=article_id)
+    return render(request, 'board/detail.html', {
+        'article': article,
+    })
 
 
-def edit(request, id):
-    pass
+def article_edit(request, article_id):
+    article = Article.objects.get(id=article_id)
+    return render(request, 'board/edit.html', {
+        'article': article,
+    })
 
 
-def update(request, id):
-    pass
+def article_update(request, article_id):
+    article = Article.objects.get(id=article_id)
+    article.title = request.POST.get('input_title')
+    article.content = request.POST.get('input_content')
+    article.save()
+    return redirect(f'/board/articles/{article.id}')
 
 
-def delete(request, id):
-    pass
+def article_delete(request, article_id):
+    article = Article.objects.get(id=article_id)
+    article.delete()
+    return redirect('/board/articles')
 
 
 def index(request):
