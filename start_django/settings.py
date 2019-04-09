@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
   'django_extensions',
   'django.contrib.admin',
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
   'django.contrib.messages',
   'django.contrib.staticfiles',
   'board',
+  'board_ad',
 ]
 
 MIDDLEWARE = [

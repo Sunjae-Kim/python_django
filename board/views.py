@@ -12,7 +12,7 @@ def article_create(request):
     article.title = request.POST.get('input_title')
     article.content = request.POST.get('input_content')
     article.save()
-    return redirect(f'/board/articles/{article.id}')
+    return redirect(f'/board_ad/articles/{article.id}')
 
 
 def article_list(request):
@@ -41,13 +41,13 @@ def article_update(request, article_id):
     article.title = request.POST.get('input_title')
     article.content = request.POST.get('input_content')
     article.save()
-    return redirect(f'/board/articles/{article.id}')
+    return redirect(f'/board_ad/articles/{article.id}')
 
 
 def article_delete(request, article_id):
     article = Article.objects.get(id=article_id)
     article.delete()
-    return redirect('/board/articles')
+    return redirect('/board_ad/articles')
 
 
 def index(request):
