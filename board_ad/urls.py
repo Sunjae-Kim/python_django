@@ -5,6 +5,7 @@ from . import views
 app_name = 'board_ad'
 
 urlpatterns = [
+    # Posting
     # Create
     path('new/', views.posting_new, name="posting_new"),
 
@@ -17,4 +18,11 @@ urlpatterns = [
 
     # Delete
     path('delete/<int:posting_id>/', views.posting_delete, name='posting_delete'),
+
+    # Comment
+    # Create
+    path('<int:posting_id>/comment/new', views.comment_new, name='comment_new'),
+
+    # Delete
+    path('<int:posting_id>/comment/<int:comment_id>/delete', views.comment_delete, name='comment_delete'),
 ]

@@ -10,4 +10,18 @@
         {% csrf_token %}
         <button type="submit">Delete</button>
     </form>
+    <form action="{% url 'board_ad:comment_new' posting.id %}" method="post">
+        {% csrf_token %}
+        <label for="comment_input"></label>
+        <input id="comment_input" type="text" name="comment">
+        <button type="submit">comment</button>
+    </form>
+    <hr />
+    {% for comment in comments %}
+        <form action="{% url 'board_ad:comment_delete' posting.id comment.id %} " method="post">
+            {% csrf_token %}
+            <p>{{ comment.content }}</p>
+            <button type="submit">delete</button>
+        </form>
+    {% endfor %}
 {% endblock %}
