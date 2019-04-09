@@ -18,7 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # /board_ad 로 시작하는 url 은 전부 board_ad/urls.py 로 보내겠다.
     path('board/', include('board.urls')),
-    path('articles/', include('board_ad.urls')),
+    path('posting/', include('board_ad.urls')),
 ]
